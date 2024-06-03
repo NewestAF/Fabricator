@@ -44,7 +44,9 @@ class Fabricator : JavaPlugin() {
         }
 
         val recipeJson = File("plugins/Fabricator/recipe.json").readText()
-        RecipeManager.fromJson(recipeJson)
+        if (recipeJson.isNotEmpty()) {
+            RecipeManager.fromJson(recipeJson)
+        }
 
         logger.info("Fabricator enabled")
     }
