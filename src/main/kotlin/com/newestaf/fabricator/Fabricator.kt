@@ -1,12 +1,8 @@
 package com.newestaf.fabricator
 
-import com.google.gson.GsonBuilder
-import com.google.gson.stream.JsonReader
+
 import com.newestaf.fabricator.command.FabricatorCommand
-import com.newestaf.fabricator.recipe.Recipe
 import com.newestaf.fabricator.service.RecipeManager
-import com.newestaf.fabricator.util.ItemStackCoder
-import org.bukkit.inventory.ItemStack
 import org.bukkit.plugin.java.JavaPlugin
 import java.io.File
 import java.io.FileWriter

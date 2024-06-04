@@ -1,13 +1,10 @@
 package com.newestaf.fabricator.command
 
 import com.newestaf.fabricator.gui.GUIManager
-import com.newestaf.fabricator.service.RecipeManager
 import org.bukkit.command.Command
 import org.bukkit.command.CommandExecutor
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
-import java.io.FileWriter
-import java.io.IOException
 
 class FabricatorCommand : CommandExecutor {
 
@@ -21,18 +18,28 @@ class FabricatorCommand : CommandExecutor {
 
         if (args.isNotEmpty()) {
             if (args[0].equals("open", ignoreCase = true)) {
-                val gui = guiManager.makeFabricatorGUI()
-                gui.show(sender)
-                return true
+                if (sender.hasPermission("fabricator.open")) {
+                    val gui = guiManager.fabricatorGUI()
+                    gui.show(sender)
+                    return true
+                }
             }
             if (args[0].equals("set", ignoreCase = true)) {
-                val gui = guiManager.makeRecipeGUI()
-                gui.show(sender)
-                return true
+                if (sender.hasPermission("fabricator.set")) {
+                    val gui = guiManager.makeRecipeGUI()
+                    gui.show(sender)
+                    return true
+                }
+            }
+            if (args[0].equals("list", ignoreCase = true)) {
+                if (sender.hasPermission("fabricator.list")) {
+                    val gui = guiManager.viewRecipeGUI()
+                    gui.show(sender)
+                    return true
+                }
             }
         }
-
-        sender.sendMessage("Usage: /fabricator open")
+        sender.sendMessage("Usage: /fabricator")
         return false
     }
 

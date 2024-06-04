@@ -4,7 +4,6 @@ import com.google.gson.GsonBuilder
 import com.google.gson.JsonObject
 import com.newestaf.fabricator.recipe.Recipe
 import com.newestaf.fabricator.util.ItemStackCoder
-import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
 import java.io.File
 
@@ -14,10 +13,6 @@ object RecipeManager {
 
     fun addRecipe(recipe: Recipe) {
         recipes.add(recipe)
-    }
-
-    fun getRecipe(index: Int): Recipe? {
-        return if (index in recipes.indices) recipes[index] else null
     }
 
     fun listRecipes(): List<Recipe> {
